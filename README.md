@@ -1,8 +1,8 @@
 # totoroot
- Totolink N200RE remote root exploit
+ Totolink N200RE remote root exploit.
 
 ## Disclaimer
- I know that the code isn't perfect. Please don't learn from it or better don't read it at all. This is my first exploit and also my first Python script.
+ I know that the code isn't perfect. Please don't learn from it or better don't read it at all.
 
 ## Supported devices
  Totolink N200RE-V3 Mini and probably other Totolink devices vulnerable to CVE-2019-19822, CVE-2019-19824 and related.
